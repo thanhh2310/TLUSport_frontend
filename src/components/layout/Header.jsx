@@ -43,6 +43,11 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Đóng ô tìm kiếm gợi ý khi chuyển hướng trang
+  useEffect(() => {
+    setIsSearchOpen(false);
+  }, [location]);
+
   return (
     <>
       <header

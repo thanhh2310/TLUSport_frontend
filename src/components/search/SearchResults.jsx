@@ -1,7 +1,7 @@
-import React from 'react'
-import ResultItemCard from '../card/search/ResultItemCard';
+import React from "react";
+import ResultItemCard from "../card/search/ResultItemCard";
 import useProductStore from "@/store/useProductStore";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const SearchResults = ({ onClose, query, onSelectTag }) => {
   const { searchResults, isSearching } = useProductStore();
@@ -16,10 +16,12 @@ const SearchResults = ({ onClose, query, onSelectTag }) => {
 
   const hotKeywords = [
     "Áo thun",
+    "Áo khoác",
     "Áo thun nam",
     "Áo thun nữ",
-    "Áo thun lạnh",
-    "Quần dài",
+    "Đồ tập gym",
+    "Đồ thể thao",
+    "Đồ bơi",
     "Túi",
   ];
   return (
@@ -40,7 +42,7 @@ const SearchResults = ({ onClose, query, onSelectTag }) => {
       </div>
       <div className="w-full">
         <h1 className="text-lg font-semibold">Kết quả tìm kiếm</h1>
-        <div className="grid grid-cols-4 gap-4 mt-4 grid-flow-col">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mt-4">
           {isSearching ? (
             Array.from({ length: 4 }).map((_, index) => (
               <div key={index} className="space-y-4 animate-pulse">
@@ -52,21 +54,32 @@ const SearchResults = ({ onClose, query, onSelectTag }) => {
               </div>
             ))
           ) : searchResults.length > 0 ? (
-            searchResults.map((product) => (
-              <ResultItemCard key={product.id} productData={product} onClose={onClose} />
-            ))
+            searchResults
+              .slice(0, 4)
+              .map((product) => (
+                <ResultItemCard
+                  key={product.id}
+                  productData={product}
+                  onClose={onClose}
+                />
+              ))
           ) : (
-            <p className="text-neutral-500 py-4 col-span-4 text-center">Không tìm thấy sản phẩm nào phù hợp.</p>
+            <p className="text-neutral-500 py-4 col-span-4 text-center">
+              Không tìm thấy sản phẩm nào phù hợp.
+            </p>
           )}
         </div>
       </div>
       {searchResults.length > 0 && !isSearching && (
-        <button onClick={handleViewAll} className='px-4 py-3 rounded-2xl bg-neutral-900 text-white font-medium text-lg cursor-pointer hover:bg-neutral-800 transition-colors mx-auto block mt-8'>
+        <button
+          onClick={handleViewAll}
+          className="px-4 py-3 rounded-2xl bg-neutral-900 text-white font-medium text-lg cursor-pointer hover:bg-neutral-800 transition-colors mx-auto block mt-8"
+        >
           Xem tất cả
         </button>
       )}
     </div>
   );
-}
+};
 
 export default SearchResults;

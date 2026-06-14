@@ -16,8 +16,22 @@ import {
 
 const ProductListingPage = () => {
   const { slug } = useParams();
-  const categoryItems = useCategoryStore((state) => state.categories.items);
-  const category = categoryItems?.find((c) => c.slug === slug);
+  const categoryTree = useCategoryStore((state) => state.categoryTree);
+
+  // Tìm kiếm đệ quy trong cây danh mục để lấy thông tin danh mục khớp với slug
+  const findCategoryBySlug = (tree, targetSlug) => {
+    if (!tree) return null;
+    for (const cat of tree) {
+      if (cat.slug === targetSlug) return cat;
+      if (cat.subCategories && cat.subCategories.length > 0) {
+        const found = findCategoryBySlug(cat.subCategories, targetSlug);
+        if (found) return found;
+      }
+    }
+    return null;
+  };
+
+  const category = findCategoryBySlug(categoryTree, slug);
 
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState({ items: [] });

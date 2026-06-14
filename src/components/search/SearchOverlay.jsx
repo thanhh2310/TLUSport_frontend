@@ -8,7 +8,9 @@ const SearchOverlay = ({ isOpen, onClose }) => {
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const inputRef = useRef(null);
 
-  const searchProductsWithAI = useProductStore((state) => state.searchProductsWithAI);
+  const searchProductsWithAI = useProductStore(
+    (state) => state.searchProductsWithAI,
+  );
   const isSearching = useProductStore((state) => state.isSearching);
 
   const handleSelectTag = (tag) => {
@@ -46,7 +48,7 @@ const SearchOverlay = ({ isOpen, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-200 bg-neutral-900/90 h-screen flex flex-col transition-transform duration-500 ease-in-out ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed inset-0 z-100 bg-neutral-900/90 h-screen flex flex-col transition-transform duration-500 ease-in-out ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       onClick={onClose}
     >
       <div

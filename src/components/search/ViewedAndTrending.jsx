@@ -3,15 +3,18 @@ import ViewedItemCard from "../card/search/ViewedItemCard";
 import useRecentlyViewedStore from "@/store/useRecentlyViewedStore";
 
 const ViewedAndTrending = ({ onSelectTag }) => {
-  const viewedProducts = useRecentlyViewedStore((state) => state.viewedProducts);
+  const viewedProducts = useRecentlyViewedStore(
+    (state) => state.viewedProducts,
+  );
   const hotKeywords = [
     "Áo thun",
+    "Áo khoác",
     "Áo thun nam",
     "Áo thun nữ",
-    "Áo thun lạnh",
-    "Giày thể thao",
-    "Quần thể thao",
-    "Phụ kiện thể thao",
+    "Đồ tập gym",
+    "Đồ thể thao",
+    "Đồ bơi",
+    "Túi",
   ];
 
   return (

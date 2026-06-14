@@ -7,7 +7,7 @@ const CategoryBanner = ({ data, selectedCategoryId }) => {
         {data?.name || "Danh mục"}
       </h1>
       {data?.subCategories && data.subCategories.length > 0 && (
-        <div className="flex justify-start md:justify-center gap-4 md:gap-6 mt-6 md:mt-10 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-none">
+        <div className="flex justify-start md:justify-center gap-4 md:gap-6 mt-6 md:mt-10 overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-0 custom-scrollbar">
           {data.subCategories.map((subCategory) => {
             const isAnySelected =
               selectedCategoryId !== null && selectedCategoryId !== undefined;
@@ -16,7 +16,7 @@ const CategoryBanner = ({ data, selectedCategoryId }) => {
             return (
               <div
                 key={subCategory.id}
-                className="cursor-pointer flex flex-col items-start gap-3 group shrink-0"
+                className="cursor-pointer flex flex-col items-center gap-3 group shrink-0"
               >
                 <div
                   className={`rounded-xl aspect-225/300 w-44 md:w-63 overflow-hidden border-2 transition-all duration-300

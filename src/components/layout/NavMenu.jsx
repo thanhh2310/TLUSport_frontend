@@ -88,8 +88,8 @@ const NavMenu = () => {
 
                         {category.name?.toLowerCase() !== "phụ kiện" && (
                           <div className="flex flex-col space-y-3 items-center">
-                            <Link
-                              to={`/list-products`}
+                            <p
+                              // to={`/list-products`}
                               className="flex items-center gap-2 text-lg font-bold text-neutral-900 hover:text-blue-700 transition-colors uppercase"
                             >
                               Phụ kiện
@@ -104,10 +104,10 @@ const NavMenu = () => {
                                   d="M8.293 2.293a1 1 0 0 1 1.414 0l4.5 4.5a1 1 0 0 1 0 1.414l-4.5 4.5a1 1 0 0 1-1.414-1.414L11 8.5H1.5a1 1 0 0 1 0-2H11L8.293 3.707a1 1 0 0 1 0-1.414"
                                 />
                               </svg>
-                            </Link>
+                            </p>
 
-                            <Link
-                              to={`/list-products`}
+                            <p
+                              // to={`/list-products`}
                               className="group/card relative w-[80%] mt-2 overflow-hidden rounded-xl shadow-sm hover:shadow-md transition-shadow"
                             >
                               <div className="aspect-4/3 w-full">
@@ -123,7 +123,7 @@ const NavMenu = () => {
                               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-white/95 px-4 py-1.5 rounded-full text-[13px] font-bold text-neutral-800 shadow-sm whitespace-nowrap">
                                 Khám phá ngay
                               </div>
-                            </Link>
+                            </p>
                           </div>
                         )}
                       </div>
