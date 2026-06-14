@@ -132,17 +132,17 @@ const AiRecommendations = () => {
         </div>
 
         {totalPages > 1 && (
-          <div className="mt-12 flex justify-center items-center gap-2">
+          <div className="mt-8 sm:mt-12 flex justify-center items-center gap-1 sm:gap-2 flex-wrap">
             <button
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1 || loading}
-              className={`px-4 py-2 rounded-full border border-neutral-300 text-sm font-medium hover:bg-neutral-100 transition-all duration-300 ${
+              className={`hidden sm:flex items-center justify-center h-8 sm:h-10 px-2.5 sm:px-4 rounded-full border border-neutral-300 text-xs sm:text-sm font-medium hover:bg-neutral-100 transition-all duration-300 ${
                 page === 1 || loading
                   ? "opacity-50 cursor-not-allowed"
                   : "cursor-pointer"
               }`}
             >
-              Trước
+              <span className="hidden sm:inline">Trước</span>
             </button>
 
             {getPaginationRange(page, totalPages).map((p, idx) => {
@@ -150,7 +150,7 @@ const AiRecommendations = () => {
                 return (
                   <span
                     key={`dots-${idx}`}
-                    className="w-10 h-10 flex items-center justify-center text-neutral-400 select-none font-bold animate-pulse"
+                    className="w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center text-neutral-400 select-none font-bold animate-pulse text-xs sm:text-sm"
                   >
                     ...
                   </span>
@@ -161,7 +161,7 @@ const AiRecommendations = () => {
                   key={p}
                   onClick={() => setPage(p)}
                   disabled={loading}
-                  className={`w-10 h-10 rounded-full border text-sm font-medium flex items-center justify-center transition-all duration-300 ${
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border text-xs sm:text-sm font-medium flex items-center justify-center transition-all duration-300 ${
                     p === page
                       ? "bg-neutral-800 text-white border-neutral-800"
                       : "border-neutral-300 text-neutral-700 hover:bg-neutral-100 cursor-pointer"
@@ -175,13 +175,13 @@ const AiRecommendations = () => {
             <button
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page === totalPages || loading}
-              className={`px-4 py-2 rounded-full border border-neutral-300 text-sm font-medium hover:bg-neutral-100 transition-all duration-300 ${
+              className={`hidden sm:flex items-center justify-center h-8 sm:h-10 px-2.5 sm:px-4 rounded-full border border-neutral-300 text-xs sm:text-sm font-medium hover:bg-neutral-100 transition-all duration-300 ${
                 page === totalPages || loading
                   ? "opacity-50 cursor-not-allowed"
                   : "cursor-pointer"
               }`}
             >
-              Sau
+              <span className="hidden sm:inline">Sau</span>
             </button>
           </div>
         )}

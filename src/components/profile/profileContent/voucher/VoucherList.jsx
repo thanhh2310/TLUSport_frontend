@@ -16,11 +16,16 @@ const VoucherList = () => {
     <div className="space-y-8">
       <p className="text-2xl sm:text-4xl font-semibold tracking-wide">Ví Voucher</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {vouchers.filter((coupon) => coupon.isActive === true).map((coupon) => (
-          <div className="h-30" key={coupon.id}>
-            <VoucherCard couponData={coupon} />
-          </div>
-        ))}
+        {vouchers
+          ?.filter((coupon) => {
+            const isExpired = coupon.endDate ? new Date(coupon.endDate) < new Date() : false;
+            return coupon.isActive === true && !isExpired;
+          })
+          .map((coupon) => (
+            <div className="h-30" key={coupon.id}>
+              <VoucherCard couponData={coupon} />
+            </div>
+          ))}
       </div>
     </div>
   );
