@@ -178,6 +178,3 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #a3a3a3;
 }
-.custom-scrollbar::-webkit-scrollbar-button {
-  display: none;
-}
